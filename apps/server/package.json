@@ -1,0 +1,21 @@
+{
+  "name": "@fortune-district/server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Colyseus authoritative server for Fortune District: one room per match, the engine is the only thing that changes GameState (ARCHITECTURE §5, ADR-0004).",
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "node --test test/*.test.ts",
+    "syntax-check": "for f in src/*.ts test/*.ts; do node --check \"$f\" || exit 1; done"
+  },
+  "dependencies": {
+    "@colyseus/core": "0.18.14",
+    "@colyseus/schema": "5.0.32",
+    "@colyseus/ws-transport": "0.18.2"
+  },
+  "devDependencies": {
+    "@colyseus/sdk": "0.18.2"
+  }
+}

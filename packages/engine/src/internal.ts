@@ -23,6 +23,7 @@ import { fraction } from './money.ts';
 import type {
   AuctionState,
   Category,
+  CityPulseEffect,
   CityPulseState,
   Credits,
   GameEvent,
@@ -51,6 +52,14 @@ export interface MutablePlayer {
   connected: boolean;
 }
 
+/** Mutable working copy of CityPulseState (the public type stays readonly). */
+export interface MutableCityPulse {
+  schedule: CityPulseEffect[];
+  telegraphed: CityPulseEffect[];
+  applied: CityPulseEffect[];
+  active: CityPulseEffect | null;
+}
+
 export interface Draft {
   matchId: string;
   config: GameState['config'];
@@ -65,7 +74,7 @@ export interface Draft {
   pricePaid: Record<TileIndex, Credits>;
   upgradeSpend: Record<TileIndex, Credits>;
   auction: AuctionState | null;
-  cityPulse: CityPulseState;
+  cityPulse: MutableCityPulse;
   eventLog: GameEvent[];
   nextSeq: number;
   /** Events produced by the current applyCommand call. */

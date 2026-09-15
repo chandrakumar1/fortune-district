@@ -8,6 +8,7 @@
   "scripts": {
     "start": "node --no-warnings serve.ts",
     "syntax-check": "for f in serve.ts src/*.ts src/ui/*.ts test/*.ts; do node --check \"$f\" || exit 1; done",
+    "typecheck": "tsc -p tsconfig.json",
     "test": "node --test test/*.test.ts"
   }
 }

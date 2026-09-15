@@ -63,13 +63,11 @@ export function renderActionPanel(snap: Snapshot, host: Host): HTMLElement {
       const price = tile && tile.kind === 'property' ? tile.price : 0;
       const my = s.players.find((p) => p.id === me)!;
       const canBuy = legal.some((c) => c.type === 'BUY_PROPERTY');
-      box.append(
-        h('h2', {}, `You landed on ${tile ? tileName(tile) : 'a property'} — nobody owns it`),
-        tile && tile.kind === 'property'
-          ? h('div', { class: 'tile-line' }, h('span', { class: 'tile-code' }, `${tile.category.slice(0, 3).toUpperCase()} ${tierPips(tile.tier)}`), ` ${tile.category}, tier ${tile.tier} · price ${money(tile.price)} · pays you ${money(tile.baseYield)} when an opponent lands here · you have ${money(my.cash)}`)
-          : null,
-        h('p', { class: 'context' }, ...(canBuy ? ['Buy it, or send it to a ', term('auction', 'sealed auction'), ' where everyone (including you) can bid.'] : [`You can't afford the ${money(price)} price, so it goes to `, term('auction'), ' — you can still bid there.'])),
-      );
+      box.append(h('h2', {}, `You landed on ${tile ? tileName(tile) : 'a property'} — nobody owns it`));
+      if (tile && tile.kind === 'property') {
+        box.append(h('div', { class: 'tile-line' }, h('span', { class: 'tile-code' }, `${tile.category.slice(0, 3).toUpperCase()} ${tierPips(tile.tier)}`), ` ${tile.category}, tier ${tile.tier} · price ${money(tile.price)} · pays you ${money(tile.baseYield)} when an opponent lands here · you have ${money(my.cash)}`));
+      }
+      box.append(h('p', { class: 'context' }, ...(canBuy ? ['Buy it, or send it to a ', term('auction', 'sealed auction'), ' where everyone (including you) can bid.'] : [`You can't afford the ${money(price)} price, so it goes to `, term('auction'), ' — you can still bid there.'])));
       const row = h('div', { class: 'row actions-row' });
       for (const c of legal) {
         if (c.type === 'BUY_PROPERTY') row.append(primary(`Buy for ${money(price)}`, c));

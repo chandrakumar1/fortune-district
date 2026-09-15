@@ -18,6 +18,7 @@
     "syntax-check": "node --check packages/engine/src/index.ts && node --check packages/engine/src/types.ts && node --check packages/engine/src/constants.ts"
   },
   "devDependencies": {
-    "typescript": "^5.8.0"
+    "@types/node": "24.13.4",
+    "typescript": "5.9.3"
   }
 }

@@ -276,7 +276,7 @@ function timeout(state: GameState, command: Command): ApplyResult {
   return ok(d);
 }
 
-function auctionCommand(state: GameState, command: Command): ApplyResult {
+function auctionCommand(state: GameState, command: Extract<Command, { type: 'SUBMIT_SEALED_BID' | 'CLOSE_AUCTION' }>): ApplyResult {
   if (state.phase.kind !== 'auction' || !state.auction) {
     return fail('WRONG_PHASE', `Command ${command.type} is only valid during an auction.`, command);
   }
