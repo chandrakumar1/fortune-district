@@ -1,0 +1,19 @@
+{
+  "name": "@fortune-district/engine",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Fortune District v0.1 rules engine. Pure, deterministic, zero runtime dependencies (ADR-0001).",
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "syntax-check": "for f in src/*.ts test/*.ts; do node --check \"$f\" || exit 1; done"
+  }
+}

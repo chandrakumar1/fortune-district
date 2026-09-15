@@ -1,0 +1,24 @@
+{
+  "name": "@fortune-district/simulator",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Headless batch simulator for Fortune District. Hosts the engine; no rendering, no network, no wall-clock timers.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "bin": {
+    "fd-sim": "./src/cli.ts"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.ts",
+    "sim": "node src/cli.ts run",
+    "check-determinism": "node src/cli.ts check-determinism",
+    "typecheck": "tsc -p tsconfig.json",
+    "syntax-check": "for f in src/*.ts test/*.ts; do node --check \"$f\" || exit 1; done"
+  },
+  "dependencies": {
+    "@fortune-district/engine": "0.1.0"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "fortune-district",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Fortune District — a 15-minute, 12-round, 2–4 player economic board game. Monorepo: rules engine, simulator, Colyseus server, React/Phaser client.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "syntax-check": "node --check packages/engine/src/index.ts && node --check packages/engine/src/types.ts && node --check packages/engine/src/constants.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0"
+  }
+}

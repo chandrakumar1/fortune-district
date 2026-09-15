@@ -1,0 +1,13 @@
+{
+  "name": "@fortune-district/hotseat",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Throwaway local hot-seat prototype: a thin browser host/UI over @fortune-district/engine for human playtests on one computer. No framework, no build, no dependencies.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "start": "node --no-warnings serve.ts",
+    "syntax-check": "for f in serve.ts src/*.ts src/ui/*.ts test/*.ts; do node --check \"$f\" || exit 1; done",
+    "test": "node --test test/*.test.ts"
+  }
+}
